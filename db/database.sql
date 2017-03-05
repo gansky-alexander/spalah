@@ -10,7 +10,8 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `name`, `description`) VALUES
 (1, 'Телевизоры', 'Категория телевизоров'),
 (2, 'Телефоны', 'Категория телефонов'),
-(3, 'Утюги', 'Категория утюгов');
+(3, 'Утюги', 'Категория утюгов'),
+(4, 'Принтеры', 'Категория принтеров');
 
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
@@ -48,7 +49,8 @@ INSERT INTO `order_entry` (`id`, `order_id`, `product_id`, `price`, `count`) VAL
 (2, 1, 2, 1000, 3),
 (3, 1, 3, 8000, 2),
 (4, 2, 6, 2500, 1),
-(5, 3, 5, 25000, 1);
+(5, 3, 5, 25000, 1),
+(6, 2, 3, 8000, 1);
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
@@ -63,7 +65,8 @@ INSERT INTO `product` (`id`, `name`, `price`, `category_id`) VALUES
 (4, 'HTC 616 gray', 7500, 2),
 (5, 'Iphone 5 black', 25000, 2),
 (6, 'Красный утюг', 2500, 3),
-(7, 'Утюг Samsung 125', 6000, 3);
+(7, 'Утюг Samsung 125', 6000, 3),
+(8, 'Ноутбук ASUS', 50000, NULL);
 
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
@@ -85,7 +88,7 @@ ALTER TABLE `product`
   ADD KEY `poduct_category_id_fk` (`category_id`);
 
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 ALTER TABLE `customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
@@ -94,10 +97,10 @@ ALTER TABLE `order`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 ALTER TABLE `order_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 ALTER TABLE `order`
   ADD CONSTRAINT `order_customer_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
