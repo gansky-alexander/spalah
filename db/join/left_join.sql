@@ -37,3 +37,16 @@ FROM customer c
                WHERE oe.count > 2
              ) ord
     ON c.id = ord.customer_id
+
+-- complex condition
+SELECT
+  p.name,
+  c.name,
+  oe.price,
+  oe.count
+FROM product p
+  INNER JOIN category c
+    ON p.category_id = c.id
+  LEFT JOIN order_entry oe
+    ON p.id = oe.product_id
+       AND oe.count > 2
